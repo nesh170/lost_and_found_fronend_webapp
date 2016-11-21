@@ -2,15 +2,15 @@ var app = angular.module('app', ['ngRoute']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/static/views/home.html',
+            templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
         .when('/logout', {
-            templateUrl: '/static/views/logout.html',
+            templateUrl: 'views/logout.html',
             controller: 'logoutCtrl'
         })
         .otherwise({
-            templateUrl: '/static/views/home.html',
+            templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
 });
