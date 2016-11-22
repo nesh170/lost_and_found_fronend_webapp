@@ -16,6 +16,22 @@ app.config(['$routeProvider',function ($routeProvider) {
 
 }]);
 
+app.run(['$rootScope','$log', function($rootScope,$log){
+    $rootScope.checkLogin = function(){
+        var access_token = localStorage.getItem("access_token");
+        $rootScope.loggedIn = access_token != null;
+        return $rootScope.loggedIn;
+    }
+}]);
+
+app.run(['$rootScope','$location', function ($rootScope,$location) {
+    $rootScope.$on('$locationChangeStart', function(){
+        if($rootScope.checkLogin() == false){
+            $location.path("/")
+        }
+    })
+}]);
+
 
 app.controller('mainController',['$scope',function ($scope) {
 
