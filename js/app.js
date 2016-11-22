@@ -5,6 +5,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/history', {
+            templateUrl: 'views/history.html',
+            controller: 'historyCtrl'
+        })
         .when('/logout', {
             templateUrl: 'views/logout.html',
             controller: 'logoutCtrl'

@@ -1,0 +1,32 @@
+<div ng-controller="historyCtrl">
+    <p>This is the history page</p>
+
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab)}"  ng-click="onClickTab(tab)"><a data-toggle="tab">{{tab.name}}</a></li>
+        </ul>
+
+        <div id="viewInTab">
+            <table class="table">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Location</th>
+                    <th>Tags</th>
+                    <th>Time</th>
+                    <th>Claim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in currentItems">
+                    <th scope="row">{{item.location}}</th>
+                    <td>{{item.tags}}</td>
+                    <td>{{item.timestamp}}</td>
+                    <td><button class="btn btn-primary" ng-disabled="(item.matchedId != undefined)" ng-click="claimItem(item)">Claim</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
