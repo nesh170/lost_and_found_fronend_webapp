@@ -1,5 +1,5 @@
 var app = angular.module('app', ['ngRoute']);
-app.config(function ($routeProvider) {
+app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/home.html',
@@ -13,7 +13,8 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
-});
+
+}]);
 
 
 app.controller('mainController',['$scope',function ($scope) {
