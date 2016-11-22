@@ -5,9 +5,10 @@
 			// after setting auth token in localStorage
 			// URL preprocessing
 			var str = window.location.href.split('=')[1];
+			var access_token = str.split('&')[0];
 
 			  // set localStorage
-			localStorage.setItem("access_token", str);
+			localStorage.setItem("access_token", access_token);
 
 			 // redirect to webapp
 			window.location = '.';
