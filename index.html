@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href = "css/index.css">
 </head>
+<header>
+    <button type="button" class = "btn btn-success" ng-click = "loginFunc()">Login</button>
+    <button type="button" class = "btn btn-danger" ng-click = "logoutFunc()">Logout</button>
+
+</header>
+
 <body ng-controller="mainController">
 <p>This is not within the ngview</p>
 <div ng-view>

@@ -17,6 +17,11 @@ app.config(['$routeProvider',function ($routeProvider) {
 }]);
 
 
-app.controller('mainController',['$scope',function ($scope) {
-
+app.controller('mainController',['$scope', '$location',function ($scope, $location) {
+    $scope.loginFunc = function() {
+        $location.path("http://colab-sbx-122.oit.duke.edu:8080/authenticate/production");
+    };
+    $scope.logoutFunc = function() {
+        $location.path('/#/logout');
+    };
 }]);
