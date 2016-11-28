@@ -18,8 +18,20 @@
 </header>
 
 <body ng-controller="mainController">
-<p>This is not within the ngview</p>
+<p>This is not within the ngview </p>
+<p>This is the access token {{access_token}}</p>
 <div ng-view>
+</div>
+
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-md-2 sidebar">
+            <ul class = "nav nav-sidebar">
+                <li><a>Find a Lost Item</a></li>
+                <li><a href = "#/history">Your History</a></li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 <footer class = "footer">

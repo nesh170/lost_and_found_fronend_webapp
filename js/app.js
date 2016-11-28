@@ -40,13 +40,15 @@ app.run(['$rootScope','$location', function ($rootScope,$location) {
 
 
 app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$log',function ($scope, $location, $rootScope, $http, $log) {
+    var uniqueId = localStorage.getItem('unique_id');
     $scope.logFunc = function() {
       console.log("in log functoin");
         if ($rootScope.loggedIn) {
           $location.path('/logout');
       }
       else {
-          window.location.href = "redirect.html?access_token=393ea625a9c6cab09938340219ef3c75d44def81&expires";
+          window.location.href = "redirect.html?access_token=06332ceef5aedcf2369946ac8d907ac70e71c7fd";
+          $scope.successTest();
       }
     };
     $scope.successTest = function () {
