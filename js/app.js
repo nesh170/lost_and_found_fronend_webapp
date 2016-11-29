@@ -40,23 +40,24 @@ app.run(['$rootScope','$location', function ($rootScope,$location) {
 
 
 app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$log',function ($scope, $location, $rootScope, $http, $log) {
-    var uniqueId = localStorage.getItem('unique_id');
     $scope.logFunc = function() {
-      console.log("in log functoin");
+        $log.log("in log functoin");
         if ($rootScope.loggedIn) {
-          $location.path('/logout');
-      }
-      else {
-            window.location.href = "redirect.html?access_token=95e2fb5485f76878373d1fd407f2b66b946fdda2";
-            $scope.successTest(); //TODO: this call is still not working for some reason. /loginSuccess call only works when with independent button currently
+            $location.path('/logout');
+        }
+        else {
+            window.location.href = "redirect.html?access_token=d56861ca1c895d4733aff1e35e1efec27cbba12c";
         }
     };
-    $scope.successTest = function () {
+
+    if(localStorage.getItem("access_token") != null){ //TODO remove the logging if success
+        var access_token = localStorage.getItem("access_token");
         $log.log("success Test function");
+        $log.log($rootScope.access_token);
         $http({
             method: 'GET',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/loginsuccess',
-            params: {access_token: $rootScope.access_token}
+            params: {access_token: access_token}
         }).then(function successCallback(response) {
             $log.log("successful endpoint call");
             $log.log(response.data);
@@ -72,4 +73,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response);
         });
     }
+
+
+
 }]);
