@@ -20,15 +20,18 @@
 <body ng-controller="mainController">
 <p>This is not within the ngview </p>
 <p>This is the access token {{access_token}}</p>
+<p>This is the user name {{userName}}</p>
 <div ng-view>
 </div>
 
 <div class = "container-fluid">
     <div class = "row">
         <div class = "col-md-2 sidebar">
-            <ul class = "nav nav-sidebar">
-                <li><a>Find a Lost Item</a></li>
+            <ul class = "nav nav-sidebar" ng-show="loggedIn">
+                <li><a>Search for Items That Have Been Lost</a></li>
                 <li><a href = "#/history">Your History</a></li>
+                <li><a>I found an Item and Would Like To Report It!</a></li>
+                <li><a>Report a Lost Duke Card</a></li>
             </ul>
         </div>
     </div>

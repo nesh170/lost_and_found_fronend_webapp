@@ -47,9 +47,9 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
           $location.path('/logout');
       }
       else {
-          window.location.href = "redirect.html?access_token=06332ceef5aedcf2369946ac8d907ac70e71c7fd";
-          $scope.successTest();
-      }
+            window.location.href = "redirect.html?access_token=95e2fb5485f76878373d1fd407f2b66b946fdda2";
+            $scope.successTest(); //TODO: this call is still not working for some reason. /loginSuccess call only works when with independent button currently
+        }
     };
     $scope.successTest = function () {
         $log.log("success Test function");
@@ -60,6 +60,9 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
         }).then(function successCallback(response) {
             $log.log("successful endpoint call");
             $log.log(response.data);
+            $log.log(response.data.body.uniqueId);
+            localStorage.setItem("unique_id", response.data.body.uniqueId);
+            $scope.userName = response.data.body.name;
         }, function errorCallback(response) {
             $log.log("There was an error with the endpoint");
             $log.log(response.status);
