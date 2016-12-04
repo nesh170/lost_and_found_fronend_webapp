@@ -5,6 +5,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/lostitems', {
+            templateUrL: 'views/history.html',
+            controller: 'historyCtrl'
+        })
         .when('/history', {
             templateUrl: 'views/history.html',
             controller: 'historyCtrl'
@@ -46,7 +50,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=d56861ca1c895d4733aff1e35e1efec27cbba12c";
+            window.location.href = "redirect.html?access_token=66326ad58792b1752d130fc7c7c5a31ad3e0793b";
         }
     };
 
