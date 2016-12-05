@@ -21,6 +21,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/post_item.html',
             controller: 'postitemCtrl'
         })
+        .when('/lostDukeCard',{
+            templateUrl:'views/lostDukeCard.html',
+            controller: 'lostDukeCardCtrl'
+        })
         .otherwise({
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
@@ -54,7 +58,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=9b8d68e865ddc69c477d1484e9c418e2ebb202f5";
+            window.location.href = "redirect.html?access_token=38276a322287d42a01404eb951f2b1b256c4fde9";
             //TODO change to this when ready to deploy in production
             //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
