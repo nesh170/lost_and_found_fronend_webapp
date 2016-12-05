@@ -19,20 +19,29 @@ app.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 
-app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $http, $log) {
+app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($scope, $http, $log, $route) {
+
+    var uniqueId = localStorage.getItem('unique_id');
+    var accessToken = localStorage.getItem('access_token');
 
     var tags = new Array();
 
     $(document).ready(function () {
         $('#addButton').click(function () {
-            handleTagInput()
+            handleTagInput();
         });
     });
 
     $(document).keyup(function (e) {
         if ($(".input1:focus") && (e.keyCode === 13)) {
-            handleTagInput()
+            handleTagInput();
         }
+    });
+
+    $(document).ready(function () {
+        $('#postButton').click(function () {
+            submitItem();
+        });
     });
 
     function handleTagInput() {
@@ -80,19 +89,29 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $ht
     }
 
     function postLost() {
-        $http.post('http://colab-sbx-122.oit.duke.edu:8080/lostItem/addItem/' + uniqueId).then(function success(response) {
-            foundItems = process(response.data.body);
-        }, function failed(response) {
-            $log.log(response)
-        });
+        var JSONData = createJSONTagObject();
+        $http({
+            method: 'POST',
+            url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/addItem',
+            headers: {'Content-Type': 'application/json'},
+            data: createJSONTagObject()
+        }).then(function successCallback(response) {
+            $log.log('request succeeded!');
+            $log.log(response);
 
+        });
     }
 
     function postFound() {
-        $http.post('http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem/' + uniqueId).then(function success(response) {
-            foundItems = process(response.data.body);
-        }, function failed(response) {
-            $log.log(response)
+        var JSONData = createJSONTagObject();
+        $http({
+            method: 'POST',
+            url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/foundItem',
+            headers: {'Content-Type': 'application/json'},
+            data: createJSONTagObject()
+        }).then(function successCallback(response) {
+            $log.log('request succeeded!');
+            $log.log(response);
         });
     }
 
@@ -101,9 +120,9 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $ht
             "uniqueId": uniqueId,
             "geolocation": document.getElementById('location').value,
             "timestamp": Date.now(),
-            "accessToken": access_token,
+            "accessToken": accessToken,
             "tags": tags
-        }
+        };
         return tagsJSON;
     }
 
@@ -119,9 +138,16 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $ht
         }).error(function (response) {
                 $log.log(response)
         });
+    };
+
+    function submitItem() {
+        if ($route.current.params['typeOfItem'] == "found") {
+            postFound();
+        }
+        else if ($route.current.params['typeOfItem'] == "lost") {
+            postLost();
+        }
     }
-
-
 
 }]);
 
