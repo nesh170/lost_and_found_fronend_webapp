@@ -50,7 +50,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production";
+            window.location.href = "redirect.html?access_token=c6db740f994ee899051a43a7fe53e0efc1268d44";
         }
     };
 
