@@ -24,7 +24,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     var uniqueId = localStorage.getItem('unique_id');
     var accessToken = localStorage.getItem('access_token');
 
-    var tags = new Array();
+    $scope.tags = [];
 
     $(document).ready(function () {
         $('#addButton').click(function () {
@@ -38,20 +38,14 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
     });
 
-    $(document).ready(function () {
-        $('#postButton').click(function () {
-            submitItem();
-        });
-    });
-
     function handleTagInput() {
         var tag = document.getElementById('tagField').value;
         addTag(tag);
         document.getElementById('tagField').value = '';
     }
 
-    function addTag(tag) {
-        if (tags.indexOf(tag) >= 0) {
+     function addTag(tag) {
+        if ($scope.tags.indexOf(tag) >= 0) {
 
         }
         if (tag.length > 0) {
@@ -68,21 +62,22 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             });
             box.appendChild(close);
             $(".tagBox").append(box);
-            tags.push(tag);
+            $scope.tags.push(tag);
+            $log.log($scope.tags)
         }
 
-    }
+    };
 
     $(document).on('click', '.closeButton', function () {
-        deleteTag(this);
+        $scope.deleteTag(this);
     });
 
-    function deleteTag(tag) {
+    $scope.deleteTag = function(tag) {
         var textNode = tag.parentNode.childNodes[0];
         var text = textNode.nodeValue;
-        var index = tags.indexOf(text);
+        var index = $scope.tags.indexOf(text);
         if (index > -1) {
-            tags.splice(index, 1);
+            $scope.tags.splice(index, 1);
         }
         var box = tag.parentNode.parentNode;
         box.removeChild(tag.parentNode);
@@ -90,15 +85,15 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
 
     function postLost() {
         var JSONData = createJSONTagObject();
+        $log.log(JSONData);
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/addItem',
             headers: {'Content-Type': 'application/json'},
-            data: createJSONTagObject()
+            data: JSONData
         }).then(function successCallback(response) {
             $log.log('request succeeded!');
             $log.log(response);
-
         });
     }
 
@@ -121,7 +116,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             "geolocation": document.getElementById('location').value,
             "timestamp": Date.now(),
             "accessToken": accessToken,
-            "tags": tags
+            "tags": $scope.tags
         };
         return tagsJSON;
     }
@@ -140,7 +135,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         });
     };
 
-    function submitItem() {
+    $scope.submitItem = function() {
         if ($route.current.params['typeOfItem'] == "found") {
             postFound();
         }
