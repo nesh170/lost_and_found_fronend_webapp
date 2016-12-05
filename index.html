@@ -5,6 +5,9 @@
     <title>Lost And Found</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/app.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/controllers/home.js"></script>
@@ -12,12 +15,9 @@
     <script src="js/controllers/history.js"></script>
     <script src = "js/controllers/lostItem.js"></script>
     <script src="js/controllers/postitem.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/founditem.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src = "js/controllers/lostDukeCard.js"></script>
     <link rel="stylesheet" href = "css/index.css">
+    <link rel="stylesheet" href="css/founditem.css">
 </head>
 <header>
     <button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
@@ -33,7 +33,7 @@
                 <li><a href = "#/lostitems">Search for Items That Have Been Lost</a></li>
                 <li><a href = "#/history">Your History</a></li>
                 <li><a>I found an Item and Would Like To Report It!</a></li>
-                <li><a>Report a Lost Duke Card</a></li>
+                <li><a href="#/lostDukeCard">Report a Lost Duke Card</a></li>
             </ul>
         </div>
         <div class = "col-md-8">
