@@ -26,11 +26,6 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
 
     $scope.tags = [];
 
-    $(document).ready(function () {
-        $('#addButton').click(function () {
-            handleTagInput();
-        });
-    });
 
     $(document).keyup(function (e) {
         if ($(".input1:focus") && (e.keyCode === 13)) {
@@ -38,7 +33,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
     });
 
-    function handleTagInput() {
+    $scope.handleTagInput = function () {
         var tag = document.getElementById('tagField').value;
         addTag(tag);
         document.getElementById('tagField').value = '';
@@ -111,6 +106,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     }
 
     function createJSONTagObject() {
+        $log.log($scope.tags);
         var tagsJSON = {
             "uniqueId": uniqueId,
             "geolocation": document.getElementById('location').value,
