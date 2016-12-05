@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lost And Found</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/founditem.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../js/controllers/postitem.js"></script>
+</head>
+
+<div>
+
+    <div style="padding:10px;">
+
+        <div style="text-align:center" >
+            <div style="font-weight:bold; font-size:20px">Post Found Item</div>
+
+            <div class="addTagContainer">
+                <div style="padding-top:5px; padding-left:5px; padding-right:5px">Add a Tag:</div>
+                <input id="tagField" class="tagField" type="text" name="tags" list="words" maxlength="25">
+                <div id="addButton" class="add">Add</div>
+            </div>
+
+            <datalist id="words">
+                <option value="possibleWord">
+                <option value="green">
+                <option value="water bottle">
+                <option value="Gatorade">
+            </datalist>
+
+            <div class="tagBox"></div>
+
+
+            <div class="addTagContainer">
+                <div style="padding-top:5px; padding-left:5px; padding-right:5px">What is your location?:</div>
+                <input id="location" class="tagField" type="text">
+            </div>
+
+            <div id="postButton" class="post">Post Item</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</html>

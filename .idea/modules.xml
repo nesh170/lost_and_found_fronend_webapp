@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/lost_and_found_webapp.iml" filepath="$PROJECT_DIR$/.idea/lost_and_found_webapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lost_and_found_fronend_webapp.iml" filepath="$PROJECT_DIR$/lost_and_found_fronend_webapp.iml" />
     </modules>
   </component>
 </project>
