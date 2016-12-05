@@ -17,6 +17,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/logout.html',
             controller: 'logoutCtrl'
         })
+        .when('/postItem/:typeOfItem', {
+            templateUrl: 'views/post_item.html',
+            controller: 'postitemCtrl'
+        })
         .otherwise({
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
@@ -51,6 +55,8 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
         }
         else {
             window.location.href = "redirect.html?access_token=c6db740f994ee899051a43a7fe53e0efc1268d44";
+            //TODO change to this when ready to deploy in production
+            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
     };
 

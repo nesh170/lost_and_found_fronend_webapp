@@ -2,12 +2,29 @@
  * Created by jimmymosca on 11/27/16.
  */
 
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function () {
+                scope.$apply(function () {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+
+
 app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $http, $log) {
 
     var tags = new Array();
 
-    $(document).ready(function(){
-        $('#addButton').click(function(){
+    $(document).ready(function () {
+        $('#addButton').click(function () {
             handleTagInput()
         });
     });
@@ -37,17 +54,17 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $ht
             var x = document.createTextNode("x");
             close.className = "closeButton";
             close.appendChild(x);
-            close.click(function() {
+            close.click(function () {
                 deleteTag(close);
             });
             box.appendChild(close);
-            $( ".tagBox" ).append( box );
+            $(".tagBox").append(box);
             tags.push(tag);
         }
 
     }
 
-    $(document).on('click','.closeButton',function() {
+    $(document).on('click', '.closeButton', function () {
         deleteTag(this);
     });
 
@@ -89,6 +106,22 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', function ($scope, $ht
         }
         return tagsJSON;
     }
+
+    $scope.uploadFile = function() {
+        var file = $scope.uploadedFile;
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post('http://colab-sbx-122.oit.duke.edu:8080/file/fileUpload', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+        }).success(function (response) {
+                $log.log(response)
+        }).error(function (response) {
+                $log.log(response)
+        });
+    }
+
+
 
 }]);
 
