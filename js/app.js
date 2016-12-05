@@ -17,6 +17,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/logout.html',
             controller: 'logoutCtrl'
         })
+        .when('/lostDukeCard',{
+            templateUrl:'views/lostDukeCard.html',
+            controller: 'lostDukeCardCtrl'
+        })
         .otherwise({
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
@@ -50,7 +54,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=c6db740f994ee899051a43a7fe53e0efc1268d44";
+            window.location.href = "redirect.html?access_token=a5e895da9356a83586ec3cd44a0eaf9dfb970c30";
         }
     };
 
