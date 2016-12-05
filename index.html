@@ -9,17 +9,36 @@
     <script src="js/controllers/home.js"></script>
     <script src="js/controllers/logout.js"></script>
     <script src="js/controllers/history.js"></script>
+    <script src = "js/controllers/lostItem.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href = "css/index.css">
 </head>
 <header>
     <button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
+    <button type="button " class = "btn btn-primary" ng-click = "successTest()">Test the Login Success</button>
 </header>
 
 <body ng-controller="mainController">
-<p>This is not within the ngview</p>
-<div ng-view>
+<p>This is not within the ngview </p>
+<p>Hi {{userName}}</p>
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-md-2 sidebar">
+            <ul class = "nav nav-sidebar" ng-show="loggedIn">
+                <li><a href = "#/lostitems">Search for Items That Have Been Lost</a></li>
+                <li><a href = "#/history">Your History</a></li>
+                <li><a>I found an Item and Would Like To Report It!</a></li>
+                <li><a>Report a Lost Duke Card</a></li>
+            </ul>
+        </div>
+        <div class = "col-md-8">
 
+        </div>
+    </div>
+
+</div>
+<div ng-view>
 </div>
 <footer class = "footer">
     <span class="text-muted">Powered by Goodberry's Ice Cream</span>
