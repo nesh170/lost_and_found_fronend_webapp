@@ -1,0 +1,9 @@
+<div class="form-group">
+    <div id="autoContainer" class="tags-cloud">
+        <input type="text" placeholder="Start typing" id="searchInput" ng-keydown="checkKeyDown($event)" class="form-control" ng-model="searchText" sng-change="search()" ng-blur="clearResults()" />
+        <div id="suggestions" class="suggestions-list" ng-show='suggestions.length > 0'>
+            <div ng-repeat="suggestion in suggestions" class="blockSpan" ng-click="selectSearchTerm($index)" ng-mouseover="$parent.selectedIndex=$index" ng-class="{'selection-active' : selectedIndex===$index}">{{suggestion}}
+            </div>
+        </div>
+    </div>
+</div>

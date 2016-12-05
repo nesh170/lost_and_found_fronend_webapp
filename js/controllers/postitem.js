@@ -25,6 +25,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     var accessToken = localStorage.getItem('access_token');
 
     $scope.tags = [];
+    $scope.tagWord = "";
 
 
     $(document).keyup(function (e) {
@@ -34,9 +35,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     });
 
     $scope.handleTagInput = function () {
-        var tag = document.getElementById('tagField').value;
-        addTag(tag);
-        document.getElementById('tagField').value = '';
+        addTag($scope.tagWord);
+        $scope.tagWord = 0;
     }
 
      function addTag(tag) {
