@@ -1,0 +1,39 @@
+<div ng-controller="postitemCtrl">
+
+    <div style="padding:10px;">
+
+        <div style="text-align:center" >
+            <div style="font-weight:bold; font-size:20px">Post Item</div>
+
+            <div class="addTagContainer">
+                <div style="padding-top:5px; padding-left:5px; padding-right:5px">Add a Tag:</div>
+                <input id="tagField" class="tagField" type="text" name="tags" list="words" maxlength="25">
+                <div id="addButton" class="add" ng-click="handleTagInput()">Add</div>
+            </div>
+
+            <datalist id="words">
+                <option value="possibleWord">
+                <option value="green">
+                <option value="water bottle">
+                <option value="Gatorade">
+            </datalist>
+
+            <div class="tagBox"></div>
+
+
+            <div class="addTagContainer">
+                <div style="padding-top:5px; padding-left:5px; padding-right:5px">What is your location?:</div>
+                <input id="location" class="tagField" type="text">
+            </div>
+
+            <div id="postButton" class="post"><button ng-click="submitItem()">Post Item</button></div>
+
+            <input type="file" file-model="uploadedFile"/>
+            <button ng-click="uploadFile()">upload me</button>
+
+        </div>
+
+    </div>
+
+</div>
+
