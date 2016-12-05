@@ -1,3 +1,46 @@
 <div ng-controller = "lostItemCtrl">
     <p>This is the lost Item page</p>
+
+    <div class = "container-fluid">
+        <div class = "row">
+            <div class = "col-md-4 col-md-offset-2">
+                <label>Search<input ng-model = "lostItemSearchText"></label>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-8 col-md-offset-2">
+                <table class = "table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Picture URL</th>
+                            <th>Tags</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat = "lostitem in lostItems | filter : lostItemSearchText">
+                        <td ng-bind = "lostitem.location"></td>
+                        <td ng-bind = "lostitem.pictureURL"></td>
+                        <td ng-bind = "lostitem.tags"></td>
+                        <td ng-bind = "lostitem.timestamp"></td>
+                    </tr>
+                    <tr>
+                        <td>Test</td>
+                        <td>Hi</td>
+                        <td>Wassup</td>
+                        <td>Yo</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-4 col-md-offset-8">
+                <button title = "Forgot your item? Add a new one to the table!" type = "button" class = "btn btn-primary" ng-click = "createNewItem()">Add a New Lost Item
+                    <i class = "fa fa-plus fa-fw" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

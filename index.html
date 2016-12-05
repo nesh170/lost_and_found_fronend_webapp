@@ -9,7 +9,9 @@
     <script src="js/controllers/home.js"></script>
     <script src="js/controllers/logout.js"></script>
     <script src="js/controllers/history.js"></script>
+    <script src = "js/controllers/lostItem.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href = "css/index.css">
 </head>
 <header>
@@ -19,12 +21,7 @@
 
 <body ng-controller="mainController">
 <p>This is not within the ngview </p>
-<p>This is the access token {{access_token}}</p>
 <p>Hi {{userName}}</p>
-<p>This is also not within the ngview</p>
-<div ng-view>
-</div>
-
 <div class = "container-fluid">
     <div class = "row">
         <div class = "col-md-2 sidebar">
@@ -35,8 +32,13 @@
                 <li><a>Report a Lost Duke Card</a></li>
             </ul>
         </div>
+        <div class = "col-md-8">
+
+        </div>
     </div>
 
+</div>
+<div ng-view>
 </div>
 <footer class = "footer">
     <span class="text-muted">Powered by Goodberry's Ice Cream</span>
