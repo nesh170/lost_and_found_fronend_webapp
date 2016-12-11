@@ -7,8 +7,8 @@
 
             <div class="addTagContainer">
                 <div style="padding-top:5px; padding-left:5px; padding-right:5px">Add a Tag:</div>
-                <input id="tagField" class="tagField" type="text" name="tags" list="words" maxlength="25">
-                <div id="addButton" class="add">Add</div>
+                <div ng-google-suggest="" ng-model="tagWord"></div>
+                <div id="addButton" class="add" ng-click="handleTagInput()">Add</div>
             </div>
 
             <datalist id="words">

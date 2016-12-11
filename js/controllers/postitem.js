@@ -25,12 +25,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     var accessToken = localStorage.getItem('access_token');
 
     $scope.tags = [];
+    $scope.tagWord = "";
 
-    $(document).ready(function () {
-        $('#addButton').click(function () {
-            handleTagInput();
-        });
-    });
 
     $(document).keyup(function (e) {
         if ($(".input1:focus") && (e.keyCode === 13)) {
@@ -38,10 +34,9 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
     });
 
-    function handleTagInput() {
-        var tag = document.getElementById('tagField').value;
-        addTag(tag);
-        document.getElementById('tagField').value = '';
+    $scope.handleTagInput = function () {
+        addTag($scope.tagWord);
+        $scope.tagWord = 0;
     }
 
      function addTag(tag) {
@@ -112,6 +107,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     }
 
     function createJSONTagObject() {
+        $log.log($scope.tags);
         var tagsJSON = {
             "uniqueId": uniqueId,
             "geolocation": document.getElementById('location').value,
