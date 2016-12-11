@@ -97,7 +97,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var JSONData = createJSONTagObject();
         $http({
             method: 'POST',
-            url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/foundItem',
+            url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem',
             headers: {'Content-Type': 'application/json'},
             data: createJSONTagObject()
         }).then(function successCallback(response) {
