@@ -30,14 +30,14 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
 
     $(document).keyup(function (e) {
         if ($(".input1:focus") && (e.keyCode === 13)) {
-            handleTagInput();
+            $scope.handleTagInput();
         }
     });
 
     $scope.handleTagInput = function () {
         addTag($scope.tagWord);
-        $scope.tagWord = 0;
-    }
+        $scope.tagWord = "";
+    };
 
      function addTag(tag) {
         if ($scope.tags.indexOf(tag) >= 0) {

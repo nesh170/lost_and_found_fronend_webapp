@@ -6,3 +6,20 @@
     position: fixed;
 }
 
+.sidebarItem {
+    margin:4px 0px 4px 0px;
+    background-color:#0a4199;
+    border-radius:5px;
+    color:white;
+    font-size:18px;
+    padding:5px;
+}
+
+.sidebarLink {
+    color:white;
+}
+
+.sidebarLink:hover {
+    color:white;
+}
+
