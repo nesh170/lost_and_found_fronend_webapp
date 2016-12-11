@@ -81,6 +81,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
         var box = tag.parentNode.parentNode;
         box.removeChild(tag.parentNode);
+        $log.log($scope.tags)
     }
 
     function postLost() {
