@@ -50,3 +50,26 @@ html, body {
     border:1px solid #cccccc;
     background-color:white;
 }
+
+.profileDropdown {
+    border-radius : 30px;
+    position : absolute;
+    top : 3%;
+    right : 15%;
+
+}
+.menuBar {
+    margin-right : 50px;
+    margin-top : 20px;
+}
+
+.homeButton {
+    position : relative;
+    right : 17%;
+}
+
+.loginButton {
+    position : relative;
+    right : 20%;
+}
+

@@ -1,5 +1,16 @@
-<div ng-controller="homeCtrl">
-    <p>Test</p>
-    <a href="redirect.html?access_token=393ea625a9c6cab09938340219ef3c75d44def81&expires">Use this Link For Local Testing</a>
-    <p>{{loggedIn}}</p>
+<div ng-controller="homeCtrl" style="text-align: center">
+    <div style="text-align: center"><h3>Welcome to Lost & Found</h3></div>
+
+
+    <div style="height: 305px">
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;" height="600px" width="800px">
+                <div class="carousel-caption">
+                    <h4>{{slide.title}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

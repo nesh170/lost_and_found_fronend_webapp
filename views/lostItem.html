@@ -1,5 +1,4 @@
 <div ng-controller = "lostItemCtrl">
-
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title" id="modal-title" ng-bind = "itemDisplay.tags"></h3>
@@ -13,6 +12,7 @@
     </script>
 
     <div class = "container">
+        <div style="font-weight:bold; font-size:20px">Lost Items</div>
         <div style="text-align: right">
                 <label><input ng-model = "lostItemSearchText" placeholder="Search Location or Tags">
                     <span class="fa fa-search" aria-hidden="true"></span>
@@ -40,7 +40,6 @@
                     </tbody>
                 </table>
         </div>
-
         <div class = "row" style="text-align: right">
                 <button title = "Forgot your item? Add a new one to the table!" type = "button" class = "btn btn-primary" ng-click = "createNewItem()">Add a New Lost Item
                     <i class = "fa fa-plus fa-fw" aria-hidden="true"></i>
