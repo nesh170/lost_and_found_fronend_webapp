@@ -7,19 +7,6 @@ app.controller('historyCtrl', ['$scope', '$http', '$log', function ($scope, $htt
     var lostItems = [];
     var foundItems = [];
 
-    var timeConverter = function(UNIX_timestamp){
-        var a = new Date(UNIX_timestamp);
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        var year = a.getFullYear();
-        var month = months[a.getMonth()];
-        var date = a.getDate();
-        var hour = a.getHours();
-        var min = a.getMinutes();
-        var sec = a.getSeconds();
-        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-        return time;
-    };
-
     var process = function (data) {
         items = [];
         for (var index in data) {
@@ -28,7 +15,8 @@ app.controller('historyCtrl', ['$scope', '$http', '$log', function ($scope, $htt
             formattedItem.id = item.id;
             formattedItem.location = item.location;
             formattedItem.tags = item.tags.join();
-            formattedItem.timestamp = timeConverter(item.timestamp);
+            formattedItem.picture_url = item.pictureURL;
+            formattedItem.timestamp = moment.unix(item.timestamp/1000).format('MMMM Do YYYY, h:mm:ss a');
             formattedItem.matchedId = item.matchedId;
             items.push(formattedItem);
         }
