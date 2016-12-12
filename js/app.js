@@ -62,9 +62,9 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            //window.location.href = "redirect.html?access_token=3b44829dd66e50405f7bf88787ca92aa53dedecf";
+            window.location.href = "redirect.html?access_token=ac76e3b53e4ad31f7a3a6069cc5b18578a7ca95d";
             //TODO change to this when ready to deploy in production
-            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
+            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
     };
     $scope.logout = function() {

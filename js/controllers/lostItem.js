@@ -1,9 +1,36 @@
 app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModal', function ($scope, $http, $log, $location, $uibModal) {
-
+    var uniqueId = localStorage.getItem('unique_id');
+    var accessToken = localStorage.getItem('access_token');
 
     $scope.createNewItem = function() {
         $log.log("in create new item");
         $location.path('/postItem/lost');
+    };
+
+    $scope.alert = {
+        message:'',
+        type:'success',
+        display:false
+    };
+
+    $scope.closeAlert = function(){
+        $scope.alert.display = false;
+    };
+
+    $scope.failAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"danger",
+            display:true
+        }
+    };
+
+    $scope.successAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"success",
+            display:true
+        }
     };
 
     $scope.open = function() {
@@ -34,7 +61,7 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModa
         return allLostItems;
     };
     $log.log("About to make get request call");
-    $http.get('http://colab-sbx-122.oit.duke.edu:8080/lostItem/allItems').then(function success(response) {
+    $http.get('http://colab-sbx-122.oit.duke.edu:8080/foundItem/allItems').then(function success(response) {
         $log.log("request succeeded");
         $log.log(response);
         $scope.lostItems = processData(response.data.body);
@@ -58,6 +85,20 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModa
             }
         });
     };
+
+    $scope.sendEmail = function(item){
+            $http({
+                method: 'POST',
+                url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/sendEmail',
+                headers:{'Content-Type':'application/json'},
+                data: {uniqueId:uniqueId, accessToken: accessToken, foundItemId:item.id}
+            }).then(function successCallback(response){
+                $scope.successAlert("Hi! "+response.data.body+" has been notified and an email has been sent!");
+            }, function errorCallback(response){
+                $log.error(response);
+                $scope.failAlert("Request Failed")
+            });
+    }
 
 
 
