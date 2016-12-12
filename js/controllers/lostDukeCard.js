@@ -6,31 +6,48 @@ app.controller('lostDukeCardCtrl',['$scope','$http', '$log', function($scope, $h
     var uniqueIdVar = localStorage.getItem('unique_id');
     var accessTokenVar = localStorage.getItem('access_token');
 
-    $log.log($scope.uniqueID);
+    $scope.alert = {
+        message:'',
+        type:'success',
+        display:false
+    };
 
-    // var headerParameter = JSON.stringify({uniqueId:uniqueIdVar, accessToken: accessTokenVar, dukeCardUniqueId:$scope.uniqueID});
+    $scope.closeAlert = function(){
+        $scope.alert.display = false;
+    };
 
+    $scope.failAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"danger",
+            display:true
+        }
+    };
+
+    $scope.successAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"success",
+            display:true
+        }
+    };
 
     $scope.notifyOwner = function() {
-        $log.log("in notify owner");
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/dukecard/createLostDukeCard',
             headers:{'Content-Type':'application/json'},
             data: {uniqueId:uniqueIdVar, accessToken: accessTokenVar, dukeCardUniqueId:$scope.uniqueID}
         }).then(function successCallback(response){
-            $log.log('request succeeded!');
-            $log.log(response);
-            //if boolean is true,
             if (response.data.body.emailSent){
-                alert("Hi! "+response.data.body.name+" has been notified and an email has been sent!");
+                $scope.successAlert("Hi! "+response.data.body.name+" has been notified and an email has been sent!");
             }
             else{
-                alert("Oh no! " +response.data.body.name+ " is not yet in the lost_and_found database! You can notify "+response.data.body.name+ " at " + response.data.body.email);
+                $scope.failAlert("Oh no! " +response.data.body.name+ " is not yet in the lost_and_found database! You can notify "+response.data.body.name+ " at " + response.data.body.email);
             }
         }, function errorCallback(response){
-            $log.log('request failed!');
-            $log.log(response);
+            $log.error(response);
+            $scope.failAlert("Request Failed")
         });
 
 
