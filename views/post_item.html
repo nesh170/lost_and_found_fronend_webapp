@@ -2,7 +2,7 @@
 
     <div style="padding:10px;">
 
-        <div style="text-align:center" >
+        <div id="postitemContainer" style="text-align:left" >
             <div style="font-weight:bold; font-size:20px">Post Item</div>
 
             <div class="addTagContainer">
@@ -27,10 +27,12 @@
             </div>
 
             <div style="text-align:center; display:flex; padding:5px;">
-                <div> <input type="file" file-model="uploadedFile"/> </div>
+                <div> <input id="fileInput" type="file" file-model="uploadedFile"/> </div>
             </div>
 
             <div id="postButton"><button class="post" ng-click="postItem()">Post Item</button></div>
+
+            <div id="errorBox" style="color:red; font-style:italic; padding:5px"></div>
         </div>
 
     </div>

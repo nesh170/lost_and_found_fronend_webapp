@@ -130,17 +130,53 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var file = $scope.uploadedFile;
         var fd = new FormData();
         fd.append('file', file);
-        $http.post('http://colab-sbx-122.oit.duke.edu:8080/file/fileUpload', fd, {
+        var problems = $scope.findErrors();
+        if (problems.length > 0) {
+            listErrors(problems);
+        }
+        else {
+            $http.post('http://colab-sbx-122.oit.duke.edu:8080/file/fileUpload', fd, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
-        }).success(function (response) {
+            }).success(function (response) {
                 $log.log(response)
                 $scope.picture = response.body;
                 $scope.submitItem();
-        }).error(function (response) {
+            }).error(function (response) {
                 $log.log(response)
-        });
+            });
+        }
     };
+
+    $scope.findErrors = function() {
+        var foundProblems = [];
+        if ($scope.tags.length == 0) {
+            foundProblems.push("tags");
+        }
+        if (!$("#location").value) {
+            foundProblems.push("location");
+        }
+        if (!$("#fileInput").value) {
+            foundProblems.push("image");
+        }
+        $log.log(foundProblems);
+        return foundProblems;
+    }
+
+    function listErrors(problems) {
+        var box = document.getElementById("errorBox");
+        if (box.firstChild) {
+            box.removeChild(box.firstChild);
+        }
+        var errorString = "You must add: ";
+        for (var i = 0; i < problems.length; i++) {
+            errorString += problems[i];
+            errorString += ",";
+        }
+        errorString = errorString.substring(0, errorString.length-1);
+        var errorNode = document.createTextNode(errorString);
+        $("#errorBox").append(errorNode);
+    }
 
     $scope.submitItem = function() {
         if ($route.current.params['typeOfItem'] == "found") {

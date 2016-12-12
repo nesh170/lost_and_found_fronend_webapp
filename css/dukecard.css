@@ -1,0 +1,25 @@
+.id {
+    background-color:#4c5056;
+    height:220px;
+    width:380px;
+    margin:100px 0px 0px 200px;
+    border-radius:25px;
+    padding:30px;
+}
+
+.head {
+    background-color:white;
+    height:70px;
+    width:60px;
+    border-radius:50%;
+    margin:0 auto;
+}
+
+.shoulders {
+    background-color:white;
+    height:30px;
+    width:100px;
+    border-radius:10px;
+    margin:0 auto;
+    margin-top:-5px;
+}
