@@ -87,7 +87,4 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response);
         });
     }
-
-
-
 }]);
