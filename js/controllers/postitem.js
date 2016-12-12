@@ -80,8 +80,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         $log.log($scope.tags)
     }
 
-    function postLost() {
-        var JSONData = createJSONTagObject();
+    function postLost(pictureURL) {
+        var JSONData = createJSONTagObject(pictureURL);
         $log.log(JSONData);
         $http({
             method: 'POST',
@@ -94,8 +94,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         });
     }
 
-    function postFound() {
-        var JSONData = createJSONTagObject();
+    function postFound(pictureURL) {
+        var JSONData = createJSONTagObject(pictureURL);
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem',
@@ -107,16 +107,17 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         });
     }
 
-    function createJSONTagObject() {
+    function createJSONTagObject(pictureURL) {
         $log.log($scope.tags);
         var tagsJSON = {
-            "uniqueId": uniqueId,
-            "geolocation": document.getElementById('location').value,
-            "timestamp": Date.now(),
-            "accessToken": accessToken,
-            "tags": $scope.tags,
-            "pictureURL": $scope.picture
-        };
+        "uniqueId": uniqueId,
+        "geolocation": document.getElementById('location').value,
+        "timestamp": Date.now(),
+        "accessToken": accessToken,
+        "tags": $scope.tags,
+        "picture_url": pictureURL
+    };
+        $log.log(tagsJSON);
         return tagsJSON;
     }
 
@@ -128,20 +129,19 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
         }).success(function (response) {
-                $log.log(response)
-                $scope.picture = response.body;
-                $scope.submitItem();
+                $log.log(response);
+                $scope.submitItem(response.body);
         }).error(function (response) {
                 $log.log(response)
         });
     };
 
-    $scope.submitItem = function() {
+    $scope.submitItem = function(pictureURL) {
         if ($route.current.params['typeOfItem'] == "found") {
-            postFound();
+            postFound(pictureURL);
         }
         else if ($route.current.params['typeOfItem'] == "lost") {
-            postLost();
+            postLost(pictureURL);
         }
     }
 
