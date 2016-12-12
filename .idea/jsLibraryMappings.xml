@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{angular-sanitize, angular-touch, moment-with-locales, ui-bootstrap, ui-bootstrap-tpls-2.3.1}" />
+    <file url="PROJECT" libraries="{angular-sanitize, angular-touch, bootstrap, moment-with-locales, ui-bootstrap, ui-bootstrap-tpls-2.3.1}" />
   </component>
 </project>

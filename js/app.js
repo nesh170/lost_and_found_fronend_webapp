@@ -5,6 +5,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/home', {
+            templateUrl: 'views/home.html',
+            controller: 'homeCtrl'
+        })
         .when('/lostitems', {
             templateUrl: 'views/lostItem.html',
             controller: 'lostItemCtrl'
@@ -58,10 +62,15 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=014a11ade3277995c1bbb4fbb00707d8a1b884e2";
+            window.location.href = "redirect.html?access_token=3b44829dd66e50405f7bf88787ca92aa53dedecf";
             //TODO change to this when ready to deploy in production
-            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
+            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
+    };
+    $scope.login = function() {
+        $log.log("root scope logged in is " + $rootScope.loggedIn);
+        window.location.href = "redirect.html?access_token=3b44829dd66e50405f7bf88787ca92aa53dedecf";
+        $log.log("now log in is " + $rootScope.loggedIn);
     };
 
     if(localStorage.getItem("access_token") != null){ //TODO remove the logging if success
@@ -78,6 +87,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response.data.body.uniqueId);
             localStorage.setItem("unique_id", response.data.body.uniqueId);
             $scope.userName = response.data.body.name;
+            $scope.firstInitial = $scope.userName.substring(0, 1);
         }, function errorCallback(response) {
             $log.log("There was an error with the endpoint");
             $log.log(response.status);
