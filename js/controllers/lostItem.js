@@ -34,7 +34,7 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModa
         return allLostItems;
     };
     $log.log("About to make get request call");
-    $http.get('http://colab-sbx-122.oit.duke.edu:8080/lostItem/allItems').then(function success(response) {
+    $http.get('http://colab-sbx-122.oit.duke.edu:8080/foundItem/allItems').then(function success(response) {
         $log.log("request succeeded");
         $log.log(response);
         $scope.lostItems = processData(response.data.body);
