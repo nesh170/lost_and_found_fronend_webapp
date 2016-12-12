@@ -7,40 +7,39 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/app.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/controllers/home.js"></script>
     <script src="js/controllers/logout.js"></script>
     <script src="js/controllers/history.js"></script>
-    <script src = "js/controllers/lostItem.js"></script>
+    <script src="js/controllers/lostItem.js"></script>
     <script src="js/controllers/postitem.js"></script>
-    <script src = "js/controllers/lostDukeCard.js"></script>
-    <link rel="stylesheet" href = "css/index.css">
+    <script src="js/controllers/lostDukeCard.js"></script>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/founditem.css">
 </head>
 <!--<header>-->
-    <!--<button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>-->
+<!--<button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>-->
 <!--</header>-->
 
 <body ng-controller="mainController">
-<div style="display:flex">
+<div style="display:flex; height:100%">
 
-    <div style="padding:10px">
-        <button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
+    <div class="sidebar">
+        <button type="button " class="btn btn-primary" ng-click="logFunc()">{{loggedText}}</button>
 
         <div>
             <div>
-                <div>
-                    <div class="sidebarItem"><a class="sidebarLink" href = "#/lostitems">Search for Lost Items</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/history">Your History</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" href = "#/founditems">Report Found Item</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" href="#/lostDukeCard">Report Lost Duke Card</a></div>
+                <div class="sidebarItem"><a class="sidebarLink" href="#/lostitems">Search for Lost Items</a></div>
+                <div class="sidebarItem"><a class="sidebarLink" style="color:white" href="#/history">Your History</a>
                 </div>
+                <div class="sidebarItem"><a class="sidebarLink" href="#/founditems">Report Found Item</a></div>
+                <div class="sidebarItem"><a class="sidebarLink" href="#/lostDukeCard">Report Lost Duke Card</a></div>
             </div>
-            <div class = "col-md-8">
+        </div>
+        <div class="col-md-8">
 
-            </div>
         </div>
 
     </div>
@@ -48,7 +47,7 @@
     </div>
 </div>
 
-<footer class = "footer">
+<footer class="footer">
     <span class="text-muted">Powered by Goodberry's Ice Cream</span>
 </footer>
 </body>
