@@ -60,7 +60,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
         else {
             window.location.href = "redirect.html?access_token=752743d86060530e66662b23de2c5121551b27a5";
             //TODO change to this when ready to deploy in production
-            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
+            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
     };
 
