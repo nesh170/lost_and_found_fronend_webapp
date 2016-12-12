@@ -27,7 +27,7 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModa
             itemObject.pictureURL = data[i].pictureURL;
             //join items of tags array into a string
             itemObject.tags = data[i].tags.join();
-            itemObject.timestamp = data[i].timestamp;
+            itemObject.timestamp =  moment.unix(data[i].timestamp/1000).format('MMMM Do YYYY, h:mm:ss a');
             itemObject.uniqueId = data[i].uniqueId;
             allLostItems[i] = itemObject;
         }
