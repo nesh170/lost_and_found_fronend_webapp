@@ -34,7 +34,8 @@
                 <span class="caret"></span>
             </button>
             <ul class = "dropdown-menu" style = "left : 0; right : auto">
-                <li><b>{{userName}}</b></li>
+                <li><i class="fa fa-user-o" aria-hidden="true"></i>
+                    <b>{{userName}}</b></li>
                 <li>{{email}}</li>
                 <hr>
                 <li>
@@ -62,7 +63,12 @@
                     <div class="sidebarItem"><a class="sidebarLink" href = "#/lostitems">Search for Lost Items</a></div>
                     <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/history">Your History</a></div>
                     <div class="sidebarItem"><a class="sidebarLink" href = "#/postItem/found">Report Found Item</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" href="#/lostDukeCard">Report Lost Duke Card</a></div>
+                    <div class="sidebarItem">
+                        <a class="sidebarLink" href="#/lostDukeCard">
+                            <i class="fa fa-address-card-o pull-left" aria-hidden="true"></i>
+                            Report Lost Duke Card
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
