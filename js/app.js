@@ -5,6 +5,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/home', {
+            templateUrl: 'views/home.html',
+            controller: 'homeCtrl'
+        })
         .when('/lostitems', {
             templateUrl: 'views/lostItem.html',
             controller: 'lostItemCtrl'
@@ -58,7 +62,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=0f0e5f6129c1dcbc5c48b585bf0bd6e44fdc05db";
+            window.location.href = "redirect.html?access_token=5138ca805e42dd8bf943a149383a32a4e20ce515";
             //TODO change to this when ready to deploy in production
             //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
@@ -78,6 +82,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response.data.body.uniqueId);
             localStorage.setItem("unique_id", response.data.body.uniqueId);
             $scope.userName = response.data.body.name;
+            $scope.firstInitial = $scope.userName.substring(0, 1);
         }, function errorCallback(response) {
             $log.log("There was an error with the endpoint");
             $log.log(response.status);

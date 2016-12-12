@@ -39,3 +39,18 @@ html, body {
     background-color: #0a4199;
 }
 
+.profileDropdown {
+    float : right;
+    border-radius : 20px;
+
+}
+.menuBar {
+    margin-right : 10px;
+    margin-top : 10px;
+}
+
+.homeButton {
+    margin-right : 10px;
+}
+
+

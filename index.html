@@ -9,6 +9,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.1/ui-bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/app.js"></script>
@@ -23,18 +24,32 @@
     <link rel="stylesheet" href="css/founditem.css">
 </head>
 <header>
-    <button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
+    <div class = "menuBar">
+        <div class = "dropdown profileDropdown">
+            <button class = "btn btn-primary dropdown-toggle" type = "button" data-toggle="dropdown">
+                {{firstInitial}}
+                <span class="caret"></span>
+            </button>
+            <ul class = "dropdown-menu">
+                <li>
+                    <button type="button" class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
+                </li>
+                <li>wassup</li>
+            </ul>
+        </div>
+        <a href = "#/home">
+            <button type = "button" class = "btn btn-success homeButton" style = "float:right">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </button>
+        </a>
+        <button type="button" class = "btn btn-success" ng-click = "logFunc()" style = "float:right" ng-hide = {{loggedIn}}>Login</button>
+    </div>
 </header>
-<!--<header>-->
-<!--<button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>-->
-<!--</header>-->
 
 <body ng-controller="mainController">
 <div style="display:flex; height:100%">
 
     <div class="sidebar">
-        <button type="button " class="btn btn-primary" ng-click="logFunc()">{{loggedText}}</button>
-
         <div>
             <div>
                 <div>
