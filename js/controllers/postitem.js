@@ -26,6 +26,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
 
     $scope.tags = [];
     $scope.tagWord = "";
+    $scope.picture = "";
 
 
     $(document).keyup(function (e) {
@@ -113,12 +114,13 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             "geolocation": document.getElementById('location').value,
             "timestamp": Date.now(),
             "accessToken": accessToken,
-            "tags": $scope.tags
+            "tags": $scope.tags,
+            "pictureURL": $scope.picture
         };
         return tagsJSON;
     }
 
-    $scope.uploadFile = function() {
+    $scope.postItem = function() {
         var file = $scope.uploadedFile;
         var fd = new FormData();
         fd.append('file', file);
@@ -127,6 +129,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 headers: {'Content-Type': undefined}
         }).success(function (response) {
                 $log.log(response)
+                $scope.picture = response.body;
+                $scope.submitItem();
         }).error(function (response) {
                 $log.log(response)
         });
