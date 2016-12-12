@@ -1,4 +1,16 @@
 <div ng-controller = "lostItemCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title" ng-bind = "itemDisplay.tags"></h3>
+        </div>
+        <div class="modal-body" id="modal-body" style="text-align: center">
+            <img ng-src = "{{itemDisplay.pictureURL}}" align="center" width="400px" height="400px"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="cancel()">Close</button>
+        </div>
+    </script>
+
     <div class = "container-fluid">
         <p>This is the lost Item page</p>
         <div class = "row">
@@ -23,9 +35,7 @@
                     <tr ng-repeat = "lostitem in lostItems | filter : lostItemSearchText">
                         <td ng-bind = "lostitem.location"></td>
                         <td>
-                            <a data-toggle = "modal" href = "#pictureModal">
-                                <img ng-src = "{{lostitem.pictureURL}}" width = "35%" height = "35%"/>
-                            </a>
+                            <img ng-src = "{{lostitem.pictureURL}}" ng-click="open(lostitem)" width = "35%" height = "35%"/>
                         </td>
                         <td ng-bind = "lostitem.tags"></td>
                         <td ng-bind = "lostitem.timestamp"></td>

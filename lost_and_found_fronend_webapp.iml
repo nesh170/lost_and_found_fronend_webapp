@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="angular-touch" level="application" />
     <orderEntry type="library" name="ui-bootstrap" level="application" />
+    <orderEntry type="library" name="ui-bootstrap-tpls-2.3.1" level="application" />
   </component>
 </module>
