@@ -27,6 +27,32 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     $scope.tags = [];
     $scope.tagWord = "";
     $scope.picture = "";
+    $scope.hasFile = false;
+    $scope.alert = {
+        message:'',
+        type:'success',
+        display:false
+    };
+
+    $scope.closeAlert = function(){
+        $scope.alert.display = false;
+    };
+
+    $scope.failAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"danger",
+            display:true
+        }
+    };
+
+    $scope.successAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"success",
+            display:true
+        }
+    };
 
 
     $(document).keyup(function (e) {
@@ -45,6 +71,12 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         addTag($scope.tagWord);
         $scope.tagWord = "";
     };
+
+    $(function() {
+        $("input:file").change(function (){
+            $scope.hasFile = true;
+        });
+    });
 
      function addTag(tag) {
         if ($scope.tags.indexOf(tag) >= 0) {
@@ -68,7 +100,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             $log.log($scope.tags)
         }
 
-    };
+    }
 
     $(document).on('click', '.closeButton', function () {
         $scope.deleteTag(this);
@@ -84,45 +116,45 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var box = tag.parentNode.parentNode;
         box.removeChild(tag.parentNode);
         $log.log($scope.tags)
-    }
+    };
 
-    function postLost() {
-        var JSONData = createJSONTagObject();
-        $log.log(JSONData);
+    function postLost(pictureURL) {
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/addItem',
             headers: {'Content-Type': 'application/json'},
-            data: JSONData
-        }).then(function successCallback(response) {
-            $log.log('request succeeded!');
-            $log.log(response);
-        });
+            data: createJSONTagObject(pictureURL)
+        }).then(function success(response){
+            $scope.successAlert("Successfully Posted Item. :D Hope you find it")
+        }, function error(response){
+                $scope.failAlert("Unable to post item. There might be no hope")
+            })
     }
 
-    function postFound() {
-        var JSONData = createJSONTagObject();
+    function postFound(pictureURL) {
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem',
             headers: {'Content-Type': 'application/json'},
-            data: createJSONTagObject()
-        }).then(function successCallback(response) {
-            $log.log('request succeeded!');
-            $log.log(response);
-        });
+            data: createJSONTagObject(pictureURL)
+        }).then(function success(response){
+            $scope.successAlert("Successfully Posted Item. :D")
+        }, function error(response){
+            $scope.failAlert("Unable to post item. lolol for the person who lost it")
+        })
     }
 
-    function createJSONTagObject() {
-        $log.log($scope.tags);
+    function createJSONTagObject(pictureURL) {
+        $log.log(pictureURL);
         var tagsJSON = {
-            "uniqueId": uniqueId,
-            "geolocation": document.getElementById('location').value,
-            "timestamp": Date.now(),
-            "accessToken": accessToken,
-            "tags": $scope.tags,
-            "pictureURL": $scope.picture
-        };
+        "uniqueId": uniqueId,
+        "geolocation": document.getElementById('location').value,
+        "timestamp": Date.now(),
+        "accessToken": accessToken,
+        "tags": $scope.tags,
+        "picture_url": pictureURL
+    };
+        $log.log(tagsJSON);
         return tagsJSON;
     }
 
@@ -138,11 +170,11 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             $http.post('http://colab-sbx-122.oit.duke.edu:8080/file/fileUpload', fd, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
-            }).success(function (response) {
-                $log.log(response)
-                $scope.picture = response.body;
-                $scope.submitItem();
-            }).error(function (response) {
+        }).then(function success(response) {
+                $log.log(response);
+                $scope.submitItem(response.data.body);
+        }, function error(response) {
+                $scope.failAlert("Cannot upload Image. Only jpg is supported!");
                 $log.log(response)
             });
         }
@@ -153,10 +185,10 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         if ($scope.tags.length == 0) {
             foundProblems.push("tags");
         }
-        if (!$("#location").value) {
+        if (document.getElementById("location").value == "") {
             foundProblems.push("location");
         }
-        if (!$("#fileInput").value) {
+        if (!$scope.hasFile) {
             foundProblems.push("image");
         }
         $log.log(foundProblems);
@@ -178,12 +210,14 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         $("#errorBox").append(errorNode);
     }
 
-    $scope.submitItem = function() {
+    $scope.submitItem = function(pictureURL) {
+        $log.log("url shown below");
+        $log.log(pictureURL)
         if ($route.current.params['typeOfItem'] == "found") {
-            postFound();
+            postFound(pictureURL);
         }
         else if ($route.current.params['typeOfItem'] == "lost") {
-            postLost();
+            postLost(pictureURL);
         }
     }
 

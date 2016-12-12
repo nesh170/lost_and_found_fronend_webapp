@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute','ngAnimate','ngSanitize','ui.bootstrap']);
 app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -58,9 +58,9 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=86208dccf1f326e5a95db670163b0ba25b895b05";
+            window.location.href = "redirect.html?access_token=014a11ade3277995c1bbb4fbb00707d8a1b884e2";
             //TODO change to this when ready to deploy in production
-            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
+            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
     };
 
@@ -87,7 +87,4 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response);
         });
     }
-
-
-
 }]);

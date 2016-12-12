@@ -1,7 +1,4 @@
-/**
- * Created by Ankit on 11/28/2016.
- */
-app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function ($scope, $http, $log, $location) {
+app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModal', function ($scope, $http, $log, $location, $uibModal) {
 
 
     $scope.createNewItem = function() {
@@ -9,7 +6,15 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function
         $location.path('/postItem/lost');
     };
 
-
+    $scope.open = function() {
+        $scope.showModal = true;
+    };
+    $scope.ok = function() {
+        $scope.showModal = false;
+    };
+    $scope.cancel = function() {
+        $scope.showModal = false;
+    };
     var processData = function(data) {
         //data is an array, each element of data is an object that has information about all of the lost items
         var allLostItems = [];
@@ -38,4 +43,30 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function
         $log.log("request failed");
         $log.log(response);
     });
+
+    $scope.open = function (lostItem) {
+        $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                lostItemForModal: function () {
+                    return lostItem
+                }
+            }
+        });
+    };
+
+
+
 }]);
+
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, $scope, lostItemForModal,$log) {
+    $log.log(lostItemForModal);
+    $scope.itemDisplay = lostItemForModal;
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});

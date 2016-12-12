@@ -1,5 +1,7 @@
 <div ng-controller="postitemCtrl">
 
+    <div uib-alert ng-class="'alert-' + alert.type" ng-show="alert.display" close="closeAlert()">{{alert.message}}</div>
+
     <div style="padding:10px;">
 
         <div id="postitemContainer" style="text-align:left" >
