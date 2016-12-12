@@ -36,6 +36,17 @@ html, body {
 }
 
 .searchOptions {
-    background-color: #0a4199;
+    background-color:white;
+    height:35px;
 }
 
+.autoCompleteTextBox {
+    border:1px solid #cccccc;
+    height:35px;
+    padding:2px;
+}
+
+.suggestionsList {
+    border:1px solid #cccccc;
+    background-color:white;
+}

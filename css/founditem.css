@@ -18,6 +18,11 @@
     margin:0 auto;
 }
 
+.tagTextBox {
+    border-radius:0px;
+    height:35px;
+}
+
 .tagField {
     height:35px;
     width:200px;

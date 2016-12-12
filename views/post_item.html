@@ -7,7 +7,7 @@
 
             <div class="addTagContainer">
                 <div style="padding-top:5px; padding-left:5px; padding-right:5px">Add a Tag:</div>
-                <div id="textBox" data-ng-google-suggest ng-model="tagWord"></div>
+                <div id="textBox" class="tagTextBox" data-ng-google-suggest ng-model="tagWord" ng-click="focusSearch()"></div>
                 <div id="addButton" class="add" ng-click="handleTagInput()">Add</div>
             </div>
 

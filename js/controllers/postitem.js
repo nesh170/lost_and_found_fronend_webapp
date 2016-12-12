@@ -35,6 +35,12 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
     });
 
+    $scope.focusSearch = function() {
+        if ($("#textBox:focus")) {
+            $('#textBox').css('zIndex', 9001);
+        }
+    }
+
     $scope.handleTagInput = function () {
         addTag($scope.tagWord);
         $scope.tagWord = "";
