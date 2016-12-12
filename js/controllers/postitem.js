@@ -132,7 +132,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     }
 
     function createJSONTagObject(pictureURL) {
-        $log.log($scope.tags);
+        $log.log(pictureURL);
         var tagsJSON = {
         "uniqueId": uniqueId,
         "geolocation": document.getElementById('location').value,
@@ -154,7 +154,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 headers: {'Content-Type': undefined}
         }).then(function success(response) {
                 $log.log(response);
-                $scope.submitItem(response.body);
+                $scope.submitItem(response.data.body);
         }, function error(response) {
                 $scope.failAlert("Cannot upload Image. Only jpg is supported!");
                 $log.log(response)
@@ -162,6 +162,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     };
 
     $scope.submitItem = function(pictureURL) {
+        $log.log("url shown below");
+        $log.log(pictureURL)
         if ($route.current.params['typeOfItem'] == "found") {
             postFound(pictureURL);
         }
