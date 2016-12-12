@@ -43,7 +43,7 @@
             </ul>
         </div>
         <a href = "#/home">
-            <button type = "button" class = "btn btn-success homeButton" style = "float:right">
+            <button type = "button" class = "btn btn-success homeButton" style = "float:right" ng-show =loggedIn>
                 <i class="fa fa-home" aria-hidden="true"></i>
             </button>
         </a>
@@ -54,7 +54,7 @@
 <body ng-controller="mainController">
 <div style="display:flex; height:100%">
 
-    <div class="sidebar">
+    <div class="sidebar" style="width: 15%">
         <div>
             <div>
                 <div>
