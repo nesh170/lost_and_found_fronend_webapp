@@ -1,4 +1,4 @@
-app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function ($scope, $http, $log, $location) {
+app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location','$uibModal', function ($scope, $http, $log, $location, $uibModal) {
 
 
     $scope.createNewItem = function() {
@@ -43,4 +43,30 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function
         $log.log("request failed");
         $log.log(response);
     });
+
+    $scope.open = function (lostItem) {
+        $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                lostItemForModal: function () {
+                    return lostItem
+                }
+            }
+        });
+    };
+
+
+
 }]);
+
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, $scope, lostItemForModal,$log) {
+    $log.log(lostItemForModal);
+    $scope.itemDisplay = lostItemForModal;
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
