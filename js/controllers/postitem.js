@@ -27,6 +27,31 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     $scope.tags = [];
     $scope.tagWord = "";
     $scope.picture = "";
+    $scope.alert = {
+        message:"",
+        type:"",
+        display:false
+    };
+
+    $scope.closeAlert = function(){
+        $scope.alert.display = false;
+    };
+
+    $scope.failAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"danger",
+            display:true
+        }
+    };
+
+    $scope.successAlert = function(msg){
+        $scope.alert = {
+            message:msg,
+            type:"success",
+            display:true
+        }
+    };
 
 
     $(document).keyup(function (e) {
@@ -62,7 +87,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             $log.log($scope.tags)
         }
 
-    };
+    }
 
     $(document).on('click', '.closeButton', function () {
         $scope.deleteTag(this);
@@ -78,33 +103,25 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var box = tag.parentNode.parentNode;
         box.removeChild(tag.parentNode);
         $log.log($scope.tags)
-    }
+    };
 
     function postLost() {
-        var JSONData = createJSONTagObject();
-        $log.log(JSONData);
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/addItem',
             headers: {'Content-Type': 'application/json'},
-            data: JSONData
-        }).then(function successCallback(response) {
-            $log.log('request succeeded!');
-            $log.log(response);
-        });
+            data: createJSONTagObject()
+        }).success($scope.successAlert("Successfully Posted Item. :D Hope you find it"))
+            .fail($scope.failAlert("Unable to post item. There might be no hope"))
     }
 
     function postFound() {
-        var JSONData = createJSONTagObject();
         $http({
             method: 'POST',
             url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem',
             headers: {'Content-Type': 'application/json'},
             data: createJSONTagObject()
-        }).then(function successCallback(response) {
-            $log.log('request succeeded!');
-            $log.log(response);
-        });
+        }).success($scope.successAlert("Successfully Posted Item. :D")).fail($scope.failAlert("Unable to post item. lolol for the person who lost it"))
     }
 
     function createJSONTagObject() {
@@ -128,10 +145,11 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
         }).success(function (response) {
-                $log.log(response)
+                $log.log(response);
                 $scope.picture = response.body;
                 $scope.submitItem();
         }).error(function (response) {
+                $scope.failAlert("Cannot upload Image. Only jpg is supported!");
                 $log.log(response)
         });
     };
