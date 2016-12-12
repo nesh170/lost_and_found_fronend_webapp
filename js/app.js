@@ -87,6 +87,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response.data.body.uniqueId);
             localStorage.setItem("unique_id", response.data.body.uniqueId);
             $scope.userName = response.data.body.name;
+            $scope.email = response.data.body.email;
             $scope.firstInitial = $scope.userName.substring(0, 1);
         }, function errorCallback(response) {
             $log.log("There was an error with the endpoint");

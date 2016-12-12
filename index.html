@@ -34,10 +34,12 @@
                 <span class="caret"></span>
             </button>
             <ul class = "dropdown-menu" style = "left : 0; right : auto">
+                <li><b>{{userName}}</b></li>
+                <li>{{email}}</li>
                 <li>
                     <button type="button" class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
                 </li>
-                <li>wassup</li>
+
             </ul>
         </div>
         <a href = "#/home">
@@ -45,6 +47,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
             </button>
         </a>
+        <button type="button" class = "btn btn-success loginButton" ng-click = "login()" style = "float:right" ng-hide =loggedIn>Login</button>
     </div>
 </header>
 
