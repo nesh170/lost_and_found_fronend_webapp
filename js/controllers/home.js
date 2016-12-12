@@ -1,7 +1,7 @@
 
 app.controller('homeCtrl',['$scope',function($scope){
     $scope.myInterval = 5000;
-    $scope.noWrapSlides = true;
+    $scope.noWrapSlides = false;
     $scope.active = 0;
 
     $scope.slides = [
