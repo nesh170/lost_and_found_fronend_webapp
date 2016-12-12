@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute','ui.bootstrap']);
+var app = angular.module('app', ['ngRoute','ngAnimate','ngSanitize','ui.bootstrap']);
 app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -58,7 +58,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $location.path('/logout');
         }
         else {
-            window.location.href = "redirect.html?access_token=86208dccf1f326e5a95db670163b0ba25b895b05";
+            window.location.href = "redirect.html?access_token=31a45cf632c7d87b3ba8c5027b487fc5fa41a5a2";
             //TODO change to this when ready to deploy in production
             //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
@@ -87,7 +87,4 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
             $log.log(response);
         });
     }
-
-
-
 }]);

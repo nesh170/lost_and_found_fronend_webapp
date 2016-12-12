@@ -5,9 +5,10 @@
     <title>Lost And Found</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.1/ui-bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.3.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,6 +23,9 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/founditem.css">
 </head>
+<header>
+    <button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>
+</header>
 <!--<header>-->
 <!--<button type="button " class = "btn btn-primary" ng-click = "logFunc()">{{loggedText}}</button>-->
 <!--</header>-->
@@ -34,11 +38,12 @@
 
         <div>
             <div>
-                <div class="sidebarItem"><a class="sidebarLink" href="#/lostitems">Search for Lost Items</a></div>
-                <div class="sidebarItem"><a class="sidebarLink" style="color:white" href="#/history">Your History</a>
+                <div>
+                    <div class="sidebarItem"><a class="sidebarLink" href = "#/lostitems">Search for Lost Items</a></div>
+                    <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/history">Your History</a></div>
+                    <div class="sidebarItem"><a class="sidebarLink" href = "#/postItem/found">Report Found Item</a></div>
+                    <div class="sidebarItem"><a class="sidebarLink" href="#/lostDukeCard">Report Lost Duke Card</a></div>
                 </div>
-                <div class="sidebarItem"><a class="sidebarLink" href="#/founditems">Report Found Item</a></div>
-                <div class="sidebarItem"><a class="sidebarLink" href="#/lostDukeCard">Report Lost Duke Card</a></div>
             </div>
         </div>
         <div class="col-md-8">

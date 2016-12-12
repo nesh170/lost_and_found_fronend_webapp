@@ -1,6 +1,3 @@
-/**
- * Created by Ankit on 11/28/2016.
- */
 app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function ($scope, $http, $log, $location) {
 
 
@@ -9,7 +6,15 @@ app.controller('lostItemCtrl', ['$scope', '$http', '$log', '$location', function
         $location.path('/postItem/lost');
     };
 
-
+    $scope.open = function() {
+        $scope.showModal = true;
+    };
+    $scope.ok = function() {
+        $scope.showModal = false;
+    };
+    $scope.cancel = function() {
+        $scope.showModal = false;
+    };
     var processData = function(data) {
         //data is an array, each element of data is an object that has information about all of the lost items
         var allLostItems = [];

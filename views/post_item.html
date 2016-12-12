@@ -1,6 +1,6 @@
 <div ng-controller="postitemCtrl">
 
-    <div uib-alert ng-bind="alert.message" ng-class="'alert-' + (alert.type || 'warning')" ng-show="alert.display" close="closeAlert()"></div>
+    <div uib-alert ng-class="'alert-' + alert.type" ng-show="alert.display" close="closeAlert()">{{alert.message}}</div>
 
     <div style="padding:10px;">
 
