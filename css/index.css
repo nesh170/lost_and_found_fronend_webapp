@@ -1,9 +1,21 @@
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
 .footer {
     text-align: center;
     font-size: small;
     font-family: sans-serif;
     bottom: 0;
     position: fixed;
+}
+
+.sidebar {
+    background-color:#e6ecff;
+    height:100%;
+    padding:20px;
 }
 
 .sidebarItem {
@@ -21,5 +33,9 @@
 
 .sidebarLink:hover {
     color:white;
+}
+
+.searchOptions {
+    background-color: #0a4199;
 }
 
