@@ -26,18 +26,19 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
 
     $scope.tags = [];
     $scope.tagWord = "";
+    $scope.picture = "";
 
 
     $(document).keyup(function (e) {
         if ($(".input1:focus") && (e.keyCode === 13)) {
-            handleTagInput();
+            $scope.handleTagInput();
         }
     });
 
     $scope.handleTagInput = function () {
         addTag($scope.tagWord);
-        $scope.tagWord = 0;
-    }
+        $scope.tagWord = "";
+    };
 
      function addTag(tag) {
         if ($scope.tags.indexOf(tag) >= 0) {
@@ -76,6 +77,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         }
         var box = tag.parentNode.parentNode;
         box.removeChild(tag.parentNode);
+        $log.log($scope.tags)
     }
 
     function postLost() {
@@ -96,7 +98,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var JSONData = createJSONTagObject();
         $http({
             method: 'POST',
-            url: 'http://colab-sbx-122.oit.duke.edu:8080/lostItem/foundItem',
+            url: 'http://colab-sbx-122.oit.duke.edu:8080/foundItem/addItem',
             headers: {'Content-Type': 'application/json'},
             data: createJSONTagObject()
         }).then(function successCallback(response) {
@@ -112,12 +114,13 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
             "geolocation": document.getElementById('location').value,
             "timestamp": Date.now(),
             "accessToken": accessToken,
-            "tags": $scope.tags
+            "tags": $scope.tags,
+            "pictureURL": $scope.picture
         };
         return tagsJSON;
     }
 
-    $scope.uploadFile = function() {
+    $scope.postItem = function() {
         var file = $scope.uploadedFile;
         var fd = new FormData();
         fd.append('file', file);
@@ -126,6 +129,8 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 headers: {'Content-Type': undefined}
         }).success(function (response) {
                 $log.log(response)
+                $scope.picture = response.body;
+                $scope.submitItem();
         }).error(function (response) {
                 $log.log(response)
         });
