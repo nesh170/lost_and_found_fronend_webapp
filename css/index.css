@@ -72,3 +72,12 @@ html, body {
     float:right;
 }
 
+.footer {
+    width:100%;
+    background-color:#011130;
+}
+
+.footer-text {
+    color:white;
+}
+
