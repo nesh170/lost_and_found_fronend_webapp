@@ -29,6 +29,13 @@
     padding:4px;
 }
 
+.locationField {
+    height:35px;
+    width:200px;
+    padding:4px;
+    color:darkgray;
+}
+
 .addTagContainer {
     padding:20px;
     display:inline-flex;
@@ -75,3 +82,4 @@
 .closeButton:hover{
     color:#808080;
 }
+

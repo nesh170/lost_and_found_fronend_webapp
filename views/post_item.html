@@ -24,15 +24,15 @@
 
 
             <div class="addTagContainer">
-                <div style="padding-top:5px; padding-left:5px; padding-right:5px">What is your location?:</div>
-                <input id="location" class="tagField" type="text">
+                <div style="padding-top:5px; padding-left:5px; padding-right:5px"> Location:</div>
+                <input id="location" class="locationField" type="text" value="Where did you find it?" onfocus="if(this.value == 'Where did you find it?') {this.value=''}">
             </div>
 
             <div style="text-align:center; display:flex; padding:5px;">
-                <div> <input class="post" id="fileInput" type="file" file-model="uploadedFile"/> </div>
+                <div> <input id="fileInput" type="file" file-model="uploadedFile"/> </div>
             </div>
 
-            <div id="postButton"><button class="post" ng-click="postItem()">Post Item</button></div>
+            <div id="postButton"><button class="post" style="margin-top:30px" ng-click="postItem()">Post Item</button></div>
 
             <div id="errorBox" style="color:red; font-style:italic; padding:5px"></div>
         </div>
