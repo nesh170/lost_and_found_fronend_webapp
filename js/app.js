@@ -9,6 +9,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/contact', {
+            templateUrl: 'views/contact.html',
+            controller: 'contactCtrl'
+        })
         .when('/lostitems', {
             templateUrl: 'views/lostItem.html',
             controller: 'lostItemCtrl'
@@ -64,11 +68,16 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
         else {
             //window.location.href = "redirect.html?access_token=4c0a831cad44ff74645ab02b16bc3dc590a4bda0";
             //TODO change to this when ready to deploy in production
-            window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
+            //window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         }
     };
     $scope.logout = function() {
         $location.path('/logout');
+    };
+    $scope.login = function() {
+        $log.log("root scope logged in is " + $rootScope.loggedIn);
+        window.location.href = "redirect.html?access_token=c41e7f073e7e7bd6caeab404c4920e186683de15";
+        $log.log("now log in is " + $rootScope.loggedIn);
     };
 
     if(localStorage.getItem("access_token") != null){ //TODO remove the logging if success

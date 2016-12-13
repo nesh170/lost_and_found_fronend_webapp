@@ -22,6 +22,7 @@
     <script src="js/controllers/lostItem.js"></script>
     <script src="js/controllers/postitem.js"></script>
     <script src="js/controllers/lostDukeCard.js"></script>
+    <script src="js/controllers/contact.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/founditem.css">
     <link rel="stylesheet" href="css/dukecard.css">
@@ -49,7 +50,7 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
             </button>
         </a>
-        <button type="button" class = "btn btn-success loginButton" ng-click = "logFunc()" style = "float:right" ng-hide =loggedIn>Login</button>
+        <button type="button" class = "btn btn-success loginButton" ng-click = "login()" style = "float:right" ng-hide =loggedIn>Login</button>
     </div>
 </header>
 
@@ -60,13 +61,34 @@
         <div>
             <div>
                 <div>
-                    <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/lostitems">Search for Lost Items</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/history">Your History</a></div>
-                    <div class="sidebarItem"><a class="sidebarLink" style="color:white" href = "#/postItem/found">Report Found Item</a></div>
                     <div class="sidebarItem">
-                        <a class="sidebarLink" href="#/lostDukeCard" style="color:white">
-                            <i class="fa fa-address-card-o pull-left" aria-hidden="true"></i>
+                        <a class="sidebarLink" href = "#/lostitems">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            Search for Lost Items
+                        </a>
+                    </div>
+                    <div class="sidebarItem">
+                            <a class="sidebarLink" style="color:white" href = "#/history">
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                                Your History
+                            </a>
+                    </div>
+                    <div class="sidebarItem">
+                        <a class="sidebarLink" href = "#/postItem/found">
+                            <i class="fa fa-exclamation" aria-hidden="true"></i>
+                            Report Found Item
+                        </a>
+                    </div>
+                    <div class="sidebarItem">
+                        <a class="sidebarLink" href="#/lostDukeCard">
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
                             Report Lost Duke Card
+                        </a>
+                    </div>
+                    <div class="sidebarItem">
+                        <a class="sidebarLink" href="#/contact">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Meet the Founders
                         </a>
                     </div>
                 </div>

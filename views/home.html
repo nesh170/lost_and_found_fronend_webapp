@@ -1,16 +1,11 @@
 <div ng-controller="homeCtrl" style="text-align: center">
-    <div style="text-align: center"><h3>Welcome to Lost & Found</h3></div>
-
-
-    <div style="height: 305px">
-        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                <img ng-src="{{slide.image}}" style="margin:auto;" height="600px" width="800px">
-                <div class="carousel-caption">
-                    <h4>{{slide.title}}</h4>
-                </div>
-            </div>
-        </div>
+    <div class="jumbotron">
+        <h1 class="display-3">Wecome to Duke Lost & Found!</h1>
+        <p class="lead">This is a dedicated Lost and Found platform, intended primarily for members of the Duke community.</p>
+        <hr class="my-2">
+        <p>Our goal is simple: Streamline the communication between those who have lost items and those who have found items. </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#/contact" role="button">Learn more about us!</a>
+        </p>
     </div>
-
 </div>
