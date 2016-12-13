@@ -73,7 +73,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
     };
 
     $(function() {
-        $("input:file").change(function (){
+        $("#fileInput").change(function (){
             $scope.hasFile = true;
         });
     });
@@ -177,6 +177,7 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
                 headers: {'Content-Type': undefined}
         }).then(function success(response) {
                 $log.log(response);
+                $scope.clearErrors();
                 $scope.submitItem(response.data.body);
         }, function error(response) {
                 $scope.failAlert("Cannot upload Image. Only jpg is supported!");
@@ -190,15 +191,15 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         if ($scope.tags.length == 0) {
             foundProblems.push("tags");
         }
-        if (document.getElementById("location").value == "") {
+        if (document.getElementById("location").value == "" || document.getElementById("location").value == "Where did you find it?") {
             foundProblems.push("location");
         }
         if (!$scope.hasFile) {
-            foundProblems.push("image");
+            foundProblems.push("picture");
         }
         $log.log(foundProblems);
         return foundProblems;
-    }
+    };
 
     function listErrors(problems) {
         var box = document.getElementById("errorBox");
@@ -214,6 +215,13 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         var errorNode = document.createTextNode(errorString);
         $("#errorBox").append(errorNode);
     }
+
+    $scope.clearErrors = function() {
+        var box = document.getElementById("errorBox");
+        if (box.firstChild) {
+            box.removeChild(box.firstChild);
+        }
+    };
 
     $scope.submitItem = function(pictureURL) {
         $log.log("url shown below");
