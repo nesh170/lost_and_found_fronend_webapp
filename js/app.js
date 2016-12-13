@@ -65,7 +65,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
     };
     $scope.login = function() {
         $log.log("root scope logged in is " + $rootScope.loggedIn);
-        //window.location.href = "redirect.html?access_token=3efc08c48b4d0d54369b0c92151f020ec5807f29";
+        //window.location.href = "redirect.html?access_token=39af47df372457018685a15b4b388ad0d3b7b741";
         window.location.href = "http://lostandfound.colab.duke.edu:8080/authenticate/production"
         $log.log("now log in is " + $rootScope.loggedIn);
     };
