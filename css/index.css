@@ -29,6 +29,7 @@ html, body {
 
 .sidebarLink {
     color:white;
+
 }
 
 .sidebarLink:hover {
@@ -64,12 +65,10 @@ html, body {
 }
 
 .homeButton {
-    position : relative;
-    right : 17%;
+    float:right;
 }
 
 .loginButton {
-    position : relative;
-    right : 20%;
+    float:right;
 }
 
