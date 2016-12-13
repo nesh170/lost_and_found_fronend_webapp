@@ -9,6 +9,10 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: 'views/home.html',
             controller: 'homeCtrl'
         })
+        .when('/contact', {
+            templateUrl: 'views/contact.html',
+            controller: 'contactCtrl'
+        })
         .when('/lostitems', {
             templateUrl: 'views/lostItem.html',
             controller: 'lostItemCtrl'
@@ -72,7 +76,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
     };
     $scope.login = function() {
         $log.log("root scope logged in is " + $rootScope.loggedIn);
-        window.location.href = "redirect.html?access_token=755613d3ff9129055205c478c40593b94182469e";
+        window.location.href = "redirect.html?access_token=3690a748dcd03e92f2a865ce8ae4645c54219e69";
         $log.log("now log in is " + $rootScope.loggedIn);
     };
 
