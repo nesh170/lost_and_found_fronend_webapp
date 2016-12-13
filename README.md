@@ -43,3 +43,9 @@ The server is hosted at [colab-sbx-122](http://colab-sbx-122.oit.duke.edu). Curr
 
 In order to deploy the front-end, we set up a simple file server with nginx to display our website on port 80 which is the default port for http requests
 
+Limitations
+--------------
+Some of the limitations includes:-
+ - Styling errors in certain locations
+ - Push notification features
+ - The log in fucntion sometimes error out when not in incognito mode
