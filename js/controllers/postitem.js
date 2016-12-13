@@ -78,6 +78,11 @@ app.controller('postitemCtrl', ['$scope', '$http', '$log', '$route', function ($
         });
     });
 
+    $('#location').click(function() {
+        $('#location').css('color', 'black');
+        $('#location').value = '';
+    });
+
      function addTag(tag) {
         if ($scope.tags.indexOf(tag) >= 0) {
 
