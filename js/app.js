@@ -76,7 +76,7 @@ app.controller('mainController',['$scope', '$location', '$rootScope', '$http','$
     };
     $scope.login = function() {
         $log.log("root scope logged in is " + $rootScope.loggedIn);
-        window.location.href = "redirect.html?access_token=3690a748dcd03e92f2a865ce8ae4645c54219e69";
+        window.location.href = "redirect.html?access_token=c41e7f073e7e7bd6caeab404c4920e186683de15";
         $log.log("now log in is " + $rootScope.loggedIn);
     };
 
